@@ -1,0 +1,42 @@
+.Navbar{
+  display: flex;
+  justify-content: space-between;
+  .logo{
+    width: 100px;
+    height: 80px;
+    padding: 10px 25px 10px;
+  }
+  .information{
+    padding: 10px 25px 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    .infor{
+      font-size: 15px;
+      font-weight: 500;
+      font-family: monospace;
+    }
+  }
+}
+
+.ListOfLogo{
+  display: flex;
+  justify-content: center;
+  .FeatureLogo{
+    height: 30px;
+    padding: 10px;
+  }
+}
+
+.Title{
+  color: #f35f5f;
+  display: flex;
+  justify-content: center;
+  font-size: 50px;
+}
+.Box{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 100%;
+}

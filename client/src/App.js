@@ -1,29 +1,34 @@
 import React, {Component} from 'react';
-import './app.scss';
+import { BrowserRouter as Router,Route,Switch }  from 'react-router-dom'
+import { withRouter } from 'react-router'
+import Homepage from './Pages/Homepage/Homepage';
+import './App.scss';
+// Scroll To Top Component
+class ScrollToTop extends Component {
+  componentDidUpdate(prevProps) {
+    if (this.props.location.pathname !== prevProps.location.pathname) {
+      window.scrollTo(0, 0);
+    }
+  }
+
+  render() {
+    return this.props.children;
+  }
+}
+const Scroll = withRouter(ScrollToTop);
 
 class App extends Component {
   render (){
     return (
-      <div className="App">
-        <div className="Navbar"><img className="logo" src="../public/logo/khtn.png" alt="logo KHTN"></img></div>
-        <div className="Title">AI-ML Lab App</div>
-        <div className="Box">
-          <div className="Upload-Image">
-            <div className="Paragrahp">Upload ảnh tại đây</div>
-            {/* Upload Image */}
-            <div></div>
-          </div>
-          <div className="Result">
-            <div className="Paragrahp">Kết quả trả về:</div>
-            {/* Result Image */}
-            <div></div>
-            {/* Accuracy */}
-            <div className="result-p">Accuracy: </div>
-            <div className="result-p">Loss: </div>
-            <div className="result-p">Epochs: </div>
-          </div>
+      <Router>
+        <div className="App">
+          <Scroll>
+            <Switch>
+              <Route exact path='/' component={Homepage} />
+            </Switch>
+          </Scroll>
         </div>
-      </div>
+      </Router>
     );
   }
 }
