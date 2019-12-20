@@ -2,6 +2,21 @@ import React, { Component } from 'react'
 import './Homepage.scss';
 
 class Homepage extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      ImageValue: '',
+    }
+  }
+
+  handleChange = (e) => {
+    console.log(e.target.value);
+    this.setState({ImageValue: e.target.value});
+  }
+
+  Click= (e) =>{
+    console.log(this.state.ImageValue);
+  }
   render() {
     return (
       <div>
@@ -23,6 +38,8 @@ class Homepage extends Component {
           <div className="Upload-Image">
             <div className="Paragrahp">Upload ảnh tại đây</div>
             {/* Upload Image */}
+            <input type="file" accept="image/*" value={this.state.ImageValue} onChange={this.handleChange}></input>
+            <button onClick={this.Click}></button>
             <div></div>
           </div>
           <div className="Result">
