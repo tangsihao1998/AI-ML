@@ -53,7 +53,7 @@ class Homepage extends Component {
           </div>
         </div>
         <div className="TitleGroup">
-          <div className="Title">AI-ML Lab App</div>
+          <div className="Title">Machine Learning CNN App Demo</div>
           <img className="FeatureLogo" src={process.env.PUBLIC_URL + '/logo/ML.png'} alt="logo ML"/>
         </div>
         <div className="ListOfLogo">
