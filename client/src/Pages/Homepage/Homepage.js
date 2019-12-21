@@ -6,6 +6,7 @@ class Homepage extends Component {
     super(props);
     this.state = {
       ImageValue: '',
+      FileName:''
     }
   }
 
@@ -14,14 +15,15 @@ class Homepage extends Component {
     const file = e.target.files[0];
     reader.readAsDataURL(file);
     reader.onload = () => {
-      console.log('Reader: ',reader,'File: ', file);
-      this.setState({ImageValue: reader.result});
+      this.setState(
+        {
+          ImageValue: reader.result,
+          FileName: file.name,
+        }
+      );
     };
   }
 
-  Click= (e) =>{
-    console.log(this.state.ImageValue);
-  }
   render() {
     const {ImageValue} = this.state;
     return (
@@ -46,7 +48,6 @@ class Homepage extends Component {
             {/* Upload Image */}
             <input className="FilePicker" type="file" accept="image/*" onChange={this.handleChange} />
             {ImageValue && <img className="Image" src={this.state.ImageValue} alt='Image Choose' /> }
-            <div></div>
           </div>
           <div className="Result">
             <div className="Paragrahp">Kết quả trả về:</div>
