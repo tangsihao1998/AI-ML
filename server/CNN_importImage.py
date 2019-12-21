@@ -12,7 +12,7 @@ from keras.models import model_from_json
 import matplotlib.image as mpimg
 import cv2
 
-
+# .\..\..\images\image.png
 # .\images\image.png
 def predict_digit(image_path):
     img = cv2.imread(image_path, cv2.IMREAD_GRAYSCALE)
@@ -47,7 +47,7 @@ def predict_digit(image_path):
     plt.imshow(img_test.reshape(28,28))
 
     y_predict = loaded_model.predict(img_test.reshape(1,28,28,1))
-    print('Result ', np.argmax(y_predict))
+    print(np.argmax(y_predict))
     return
 
 def main(image_path):
