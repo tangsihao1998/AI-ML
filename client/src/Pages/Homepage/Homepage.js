@@ -10,14 +10,20 @@ class Homepage extends Component {
   }
 
   handleChange = (e) => {
-    console.log(e.target.value);
-    this.setState({ImageValue: e.target.value});
+    const reader = new FileReader();
+    const file = e.target.files[0];
+    reader.readAsDataURL(file);
+    reader.onload = () => {
+      console.log('Reader: ',reader,'File: ', file);
+      this.setState({ImageValue: reader.result});
+    };
   }
 
   Click= (e) =>{
     console.log(this.state.ImageValue);
   }
   render() {
+    const {ImageValue} = this.state;
     return (
       <div>
         <div className="Navbar">
@@ -38,8 +44,8 @@ class Homepage extends Component {
           <div className="Upload-Image">
             <div className="Paragrahp">Upload ảnh tại đây</div>
             {/* Upload Image */}
-            <input type="file" accept="image/*" value={this.state.ImageValue} onChange={this.handleChange}></input>
-            <button onClick={this.Click}></button>
+            <input className="FilePicker" type="file" accept="image/*" onChange={this.handleChange} />
+            {ImageValue && <img className="Image" src={this.state.ImageValue} alt='Image Choose' /> }
             <div></div>
           </div>
           <div className="Result">
